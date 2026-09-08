@@ -13,18 +13,30 @@ import React from "react"
 //    - Use React.ChangeEvent<HTMLInputElement> for input change events
 // 3. Add the interface to the component's props parameter
 
-export function SpaceshipControls(props) {
-  const handleEngineToggle = (event) => {
+interface SpaceshipControlsProps {
+  onEngineToggle: () => void
+  onSpeedChange: (speed: number) => void 
+  onEmergencyStop: () => void
+}
+
+
+export function SpaceshipControls(props: SpaceshipControlsProps) {
+  const handleEngineToggle = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event.preventDefault()
     props.onEngineToggle()
   }
 
-  const handleSpeedChange = (event) => {
-    const speed = Number(event.target.value)
-    props.onSpeedChange(speed)
+  const handleSpeedChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    props.onSpeedChange(Number(event.target.value))
   }
 
-  const handleEmergencyStop = (event) => {
+  const handleEmergencyStop = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event.preventDefault()
     props.onEmergencyStop()
   }

@@ -5,7 +5,14 @@ import React from "react"
 // 1. Create an interface called SpaceshipStatusProps
 // 2. Add the interface as the type for the props parameter
 
-export function SpaceshipStatus(props) {
+interface SpaceshipStatusProps {
+  name: string
+  fuel: number
+  isOperational: boolean
+}
+
+
+export function SpaceshipStatus(props: SpaceshipStatusProps) {
   return (
     <div className="spaceship-status">
       <h2>{props.name}</h2>
